@@ -4,6 +4,11 @@ var cors = require('cors');
 var app = express();
 var jwt = require('express-jwt');
 var dotenv = require('dotenv');
+var mongo = require('mongodb');
+var monk = require('monk');
+var db = monk('localhost:27017/nodetest1');
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 dotenv.load();
 
