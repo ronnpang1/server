@@ -8,8 +8,8 @@ var dotenv = require('dotenv');
 dotenv.load();
 
 var authenticate = jwt({
-  secret: new Buffer(process.env.AUTH0_CLIENT_SECRET, 'base64'),
-  audience: process.env.AUTH0_CLIENT_ID
+  secret: new Buffer('7S5591OgMI6FBeaqAxwk2cBJwlHkrg3r', 'base64'),
+  audience: '7S5591OgMI6FBeaqAxwk2cBJwlHkrg3r' 
 });
 
 
