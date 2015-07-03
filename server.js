@@ -49,9 +49,88 @@ app.post('/test1', function(req, res) {
     res.send(200, {text: "test"});
 });
 
+app.post('/location', function(req, res) {
+	console.log("test");
+	console.log(req.body.lat);
+    res.send(200, {text: "test"});
+});
+
 
 app.get('/secured/ping', function(req, res) {
   res.send(200, {text: "All good. You only get this message if you're authenticated"});
+});
+
+
+app.post('/feed', function(req, res) {
+	var lat=req.body.lat;
+	var lng=req.body.lng;
+  var MongoClient = require("mongodb").MongoClient;//connect to db
+	//GEONEAR command
+	//returns everything around the given coordinates within a distance of 20000 meters(20km)
+	//returns an array of results from the msg collection from the closest to the furthest
+	MongoClient.connect("mongodb://otodb:ronnie@ds031872.mongolab.com:31872/heroku_app37116363", function (err, db) {
+    if (!err) {
+	  
+	 db.command({
+			
+     geoNear: "msgs1",
+     near: { type: "Point", coordinates: [ lng, \lat ] },
+     query:{group:"public"},
+     count: "msg",
+     maxDistance: 20000,
+     num:100,
+     spherical: true,
+    //callback returns result
+   }, function (err, result) {
+			console.log("NUMBER!");
+			//console.log(result.dis);
+			
+			i=0;
+			var myarr = [];
+			for(var i=0;i<result.results.length;i++)
+			{
+				num=i;
+				if(result.results[num].dis < result.results[num].obj.rad)
+				{
+				console.log("within rad");
+				console.log(result.results[num].obj.msg);
+				console.log(result.results[num].dis);
+				myarr.push(result.results[num].obj);
+				res.send(200,{data:myarr});
+				}
+				
+				else
+				{
+					
+				console.log("outside radii");	
+				console.log(result.results[num].obj.msg);
+				console.log(result.results[num].dis);
+				result.results[num].obj.rad
+					
+				}
+				
+			}
+				if(err)
+				{
+					
+				res.send(404);
+					
+				}
+				
+		
+			
+				
+				
+            
+        });
+    }
+});
+		
+		
+ 
+	
+
+
 });
 
 
