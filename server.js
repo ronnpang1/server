@@ -6,7 +6,7 @@ var jwt = require('express-jwt');
 var dotenv = require('dotenv');
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('localhost:27017/nodetest1');
+var db = monk("mongodb://otodb:ronnie@ds031872.mongolab.com:31872/heroku_app37116363");
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
@@ -38,7 +38,47 @@ app.get('/ping', function(req, res) {
 
 app.get('/secured/ping', function(req, res) {
   res.send(200, {text: "All good. You only get this message if you're authenticated"});
-})
+});
+
+
+app.post('/addmsg',function(req,res){
+	var MongoClient = require("mongodb").MongoClient;
+	MongoClient.connect("mongodb://otodb:ronnie@ds031872.mongolab.com:31872/heroku_app37116363", function(err, db) {
+	var msg=req.body.msg;
+	var lat=req.body.lat;
+	var lng=req.body.lng;
+	if(err) 
+  
+  { 
+	  return console.dir(err); 
+		
+  }
+  var collection = db.collection('msg');
+  collection.insert(
+  
+  
+  {
+	  "msg":msg,
+	  "messgloc":[lat,lng],
+	  "rad":1000,
+	  "group":"public"
+  }, function(err, result)
+  {
+	  
+	if(err)
+	{
+	console.log(err);
+	}	
+	
+	else
+	{
+	console.log("information has been added");
+	res.send(200);  
+	}
+	  
+  });
+  });
+}); 
 
 var port = process.env.PORT || 3001;
 
