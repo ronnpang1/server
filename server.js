@@ -38,8 +38,9 @@ app.get('/ping', function(req, res) {
 
 app.get('/test', function(req, res) {
 	console.log("test");
+	console.log(req.body);
 	console.log(req.body.text);
-  res.send(200, {text: "test"});
+    res.send(200, {text: "test"});
 });
 
 app.get('/secured/ping', function(req, res) {
