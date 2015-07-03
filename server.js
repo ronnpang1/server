@@ -43,6 +43,12 @@ app.get('/test', function(req, res) {
     res.send(200, {text: "test"});
 });
 
+app.post('/test1', function(req, res) {
+	console.log("test");
+    res.send(200, {text: "test"});
+});
+
+
 app.get('/secured/ping', function(req, res) {
   res.send(200, {text: "All good. You only get this message if you're authenticated"});
 });
