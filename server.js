@@ -96,7 +96,7 @@ app.post('/feed', function(req, res) {
 				console.log(result.results[num].obj.msg);
 				console.log(result.results[num].dis);
 				myarr.push(result.results[num].obj);
-				res.send(200,{data:myarr});
+				
 				}
 				
 				else
@@ -109,7 +109,10 @@ app.post('/feed', function(req, res) {
 					
 				}
 				
+				
 			}
+			
+			res.send(200,{data:myarr});
 				if(err)
 				{
 					
