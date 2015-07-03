@@ -45,6 +45,7 @@ app.get('/test', function(req, res) {
 
 app.post('/test1', function(req, res) {
 	console.log("test");
+	console.log(req.body);
     res.send(200, {text: "test"});
 });
 
