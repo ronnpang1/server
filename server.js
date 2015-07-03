@@ -74,7 +74,7 @@ app.post('/feed', function(req, res) {
 	 db.command({
 			
      geoNear: "msgs1",
-     near: { type: "Point", coordinates: [ lng, \lat ] },
+     near: { type: "Point", coordinates: [ lng, lat ] },
      query:{group:"public"},
      count: "msg",
      maxDistance: 20000,
