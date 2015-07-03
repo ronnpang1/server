@@ -41,7 +41,7 @@ app.get('/secured/ping', function(req, res) {
 });
 
 
-app.get('addmsg', function(req,res){
+app.get('/addmsg', function(req,res){
 	var MongoClient = require("mongodb").MongoClient;
 	MongoClient.connect("mongodb://otodb:ronnie@ds031872.mongolab.com:31872/heroku_app37116363", function(err, db) {
 	var msg=req.body.msg;
