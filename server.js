@@ -55,10 +55,10 @@ app.get('/secured/ping', function(req, res) {
 });
 
 
-app.get('/addmsg', function(req,res){
+app.post('/addmsg', function(req,res){
 	var MongoClient = require("mongodb").MongoClient;
 	MongoClient.connect("mongodb://otodb:ronnie@ds031872.mongolab.com:31872/heroku_app37116363", function(err, db) {
-	var msg=req.body.msg;
+	var msg=req.body.text;
 	var lat=req.body.lat;
 	var lng=req.body.lng;
 	if(err) 
@@ -82,12 +82,13 @@ app.get('/addmsg', function(req,res){
 	if(err)
 	{
 	console.log(err);
+	res.send(404, {text: "test"});
 	}	
 	
 	else
 	{
 	console.log("information has been added");
-	res.send(200);  
+	res.send(200, {text: "test"}); 
 	}
 	  
   });
