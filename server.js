@@ -37,7 +37,8 @@ app.get('/ping', function(req, res) {
 });
 
 app.get('/test', function(req, res) {
-	console.log(req.body.msg);
+	console.log("test");
+	console.log(req.body.text);
   res.send(200, {text: "test"});
 });
 
