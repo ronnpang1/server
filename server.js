@@ -36,6 +36,10 @@ app.get('/ping', function(req, res) {
   res.send(200, {text: "All good. You don't need to be authenticated to call this"});
 });
 
+app.get('/test', function(req, res) {
+  res.send(200, {text: "test"});
+});
+
 app.get('/secured/ping', function(req, res) {
   res.send(200, {text: "All good. You only get this message if you're authenticated"});
 });
