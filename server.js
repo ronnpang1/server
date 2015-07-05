@@ -143,6 +143,7 @@ app.post('/addmsg', function(req,res){
 	var msg=req.body.text;
 	var lat=req.body.lat;
 	var lng=req.body.lng;
+	var rad=req.body.rad;
 	if(err) 
   
   { 
@@ -156,7 +157,7 @@ app.post('/addmsg', function(req,res){
   {
 	  "msg":msg,
 	  "messgloc":[lat,lng],
-	  "rad":1000,
+	  "rad":rad,
 	  "group":"public"
   }, function(err, result)
   {
