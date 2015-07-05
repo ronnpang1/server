@@ -150,14 +150,22 @@ app.post('/addmsg', function(req,res){
 	  return console.dir(err); 
 		
   }
-  var collection = db.collection('msg');
+  var collection = db.collection('msg1');
   collection.insert(
   
   
   {
-	  "msg":msg,
-	  "messgloc":[lat,lng],
+	 
+	  "location":[lat,lng],
+	  "msg" : msg,
+	  "user":"test@gmail.com",
 	  "rad":rad,
+	  "upvote":1,
+	  "downvote":1,
+	  "votetotal":0,
+	  "type":"post",
+	  "report":1,
+	  "media":"text",
 	  "group":"public"
   }, function(err, result)
   {
