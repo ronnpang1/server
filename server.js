@@ -129,11 +129,6 @@ app.post('/feed', function(req, res) {
     }
 });
 		
-		
- 
-	
-
-
 });
 
 
@@ -150,7 +145,7 @@ app.post('/addmsg', function(req,res){
 	  return console.dir(err); 
 		
   }
-  var collection = db.collection('msg1');
+  var collection = db.collection('msgs1');
   collection.insert(
   
   
