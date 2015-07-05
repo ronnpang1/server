@@ -151,7 +151,7 @@ app.post('/addmsg', function(req,res){
   
   {
 	 
-	  "location":[lat,lng],
+	  "location":[lng,lat],
 	  "msg" : msg,
 	  "user":"test@gmail.com",
 	  "rad":rad,
