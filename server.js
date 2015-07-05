@@ -78,7 +78,7 @@ app.post('/feed', function(req, res) {
      query:{group:"public"},
      count: "msg",
      maxDistance: 20000,
-     num:100,
+     num:1000,
      spherical: true,
     //callback returns result
    }, function (err, result) {
