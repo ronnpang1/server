@@ -144,7 +144,7 @@ app.post('/feed', function(req, res) {
 });
 
 
-app.post('/addmsg', function(req,res){
+app.post('/addmsg', function(req,res,err){
 	var MongoClient = require("mongodb").MongoClient;
 	MongoClient.connect("mongodb://otodb:ronnie@ds031872.mongolab.com:31872/heroku_app37116363", function(err, db) {
 	var msg=req.body.text;
@@ -191,6 +191,9 @@ app.post('/addmsg', function(req,res){
 	  
   });
   });
+  if(err)
+  console.log(err);
+  
 }); 
 
 var port = process.env.PORT || 3001;
