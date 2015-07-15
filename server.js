@@ -29,7 +29,19 @@ app.configure(function () {
   app.use(cors());
 
   app.use(app.router);
+  
+  
+  
+  
+  
 });
+app.use(function(err, req, res, next) {
+    if(!err) return next(); // you also need this line
+    console.log("error!!!");
+    res.send("error!!!");
+});
+
+
 
 
 app.get('/ping', function(req, res) {
