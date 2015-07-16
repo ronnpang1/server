@@ -21,6 +21,7 @@ var authenticate = jwt({
 app.configure(function () {
 
  // Request body parsing middleware should be above methodOverride
+ //github intergration
   app.use(express.bodyParser());
   app.use(express.urlencoded());
   app.use(express.json());
@@ -142,6 +143,8 @@ app.post('/feed', function(req, res) {
 });
 		
 });
+
+
 
 
 app.post('/addmsg', function(req,res,err){
