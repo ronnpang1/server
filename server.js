@@ -151,6 +151,7 @@ app.post('/addmsg', function(req,res,err){
 	var lat=req.body.lat;
 	var lng=req.body.lng;
 	var rad=req.body.rad;
+	var usr=req.body.user;
 	if(err) 
   
   { 
@@ -165,7 +166,7 @@ app.post('/addmsg', function(req,res,err){
 	 
 	  "location":[lng,lat],
 	  "msg" : msg,
-	  "user":"test@gmail.com",
+	  "user":usr,
 	  "rad":rad,
 	  "upvote":1,
 	  "downvote":1,
