@@ -174,7 +174,8 @@ app.post('/addmsg', function(req,res,err){
 	  "type":"post",
 	  "report":1,
 	  "media":"text",
-	  "group":"public"
+	  "group":"public",
+	  "timestamp":new Date()
   }, function(err, result)
   {
 	  
